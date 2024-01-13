@@ -1,6 +1,7 @@
-Ansible learning module in depth.
+##Learning Ansible
 
-# ansible_tutoriail
+# Ansible learning module in depth. The host names, or public ips or dns names of aws instances are stored in ansible inventory file.
+It should be done before running ad-hoc commands or running a ansible playbook.
 
 
 ## Ansible Ping Command Output
