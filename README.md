@@ -1,1 +1,6 @@
-# ansible_tutorial
+A
+D
+B
+B
+C
+# ansible_tutoriail
