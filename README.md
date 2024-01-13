@@ -28,8 +28,12 @@ ansible all --private-key=/home/maddy/kube_key.pem -i inventory -m ping -u ubunt
 ```
 ### to  
 
-```bash ansible all -m ping 
+```bash 
+
+ansible all -m ping  
+
 ```
+
 ### by creating an ansible.cfg file and putting these details in 
 
 ```bash ansible.cfg
