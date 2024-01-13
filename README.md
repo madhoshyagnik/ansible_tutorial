@@ -8,7 +8,7 @@ ansible all -m apt -a "name=vim-nox" --become --ask-become-pass
 
 ### Ansible learning module in depth. The host names, or public ips or dns names of aws instances are stored in ansible inventory file. It should be done before running ad-hoc commands or running a ansible playbook.
 
-### ad-hoc commands are a way to execute a module on remote host by just running a command, and not having to create a whole playbook to do so.
+### ad-hoc commands are a way to execute a module on remote host by just running a command, and not having to create a whole playbook to do so. Facts are gathered everytime a playbook is run.
 
 ## Ansible Ping Command Output
 
@@ -221,6 +221,31 @@ changed: [65.0.29.224]
 
 PLAY RECAP ******************************************************************************************
 65.0.29.224                : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+
+```
+
+### Running the playbook again doesn't install apache again as it's already installed, we get changed = 0 this time
+
+```bash
+ansible-playbook --ask-become-pass install_apache.yml
+
+
+Output:
+
+
+BECOME password: 
+
+PLAY [all] ******************************************************************************************
+
+TASK [Gathering Facts] ******************************************************************************
+ok: [65.0.29.224]
+
+TASK [install apache2 package] **********************************************************************
+ok: [65.0.29.224]
+
+PLAY RECAP ******************************************************************************************
+65.0.29.224                : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 
 
 ```
