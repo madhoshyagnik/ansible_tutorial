@@ -1,4 +1,4 @@
-# Learning Ansible
+## Learning Ansible
 
 ```bash
 ansible all -m apt -a "name=vim-nox" --become --ask-become-pass
@@ -10,7 +10,7 @@ ansible all -m apt -a "name=vim-nox" --become --ask-become-pass
 
 ### ad-hoc commands are a way to execute a module on remote host by just running a command, and not having to create a whole playbook to do so. Facts are gathered everytime a playbook is run.
 
-## Ansible Ping Command Output
+### Ansible Ping Command Output
 
 ```bash
 ansible all --private-key=/home/maddy/kube_key.pem -i inventory -m ping -u ubuntu
@@ -28,7 +28,7 @@ In this example, the Ansible ping module successfully executed on the host with 
 ___
 
 
-## Shortened the command 
+### Shortened the command 
 
 ```bash
 ansible all --private-key=/home/maddy/kube_key.pem -i inventory -m ping -u ubuntu 
@@ -80,7 +80,7 @@ ansible all -m apt -a update_cache=true --become --ask-become-pass
 
 update_cache=true -> same as apt-get update on local
 ```
-#### Result of above command:
+### Result of above command:
 ```bash
 BECOME password: 
 65.0.29.224 | CHANGED => {
@@ -95,7 +95,7 @@ BECOME password:
 ```
 
 
-## Ansible Privilege Escalation Explanation
+### Ansible Privilege Escalation Explanation
 
 When Ansible is executing tasks on remote hosts with privilege escalation (`--become`), the `--ask-become-pass` option is used to prompt for the password of the remote user with elevated privileges (usually `root` or another specified user).
 
@@ -312,8 +312,7 @@ ___
 
 ___
 
-### Doing gather facts for an amazon linux instance, it's ip is 65.0.184.250 and it's in same inventory.
-### need to define -u ec2-user in command as default remote_user is ubuntu in inventory file.
+### Doing gather facts for an amazon linux instance, it's ip is 65.0.184.250 and it's in same inventory. need to define -u ec2-user in command as default remote_user is ubuntu in inventory file.
 
 ```bash
 ansible all -m gather_facts --limit 65.0.184.250 -u ec2-user | grep ansible_distribution
@@ -338,8 +337,7 @@ core/2.16/reference_appendices/interpreter_discovery.html for more information.
 
 ```
 
-### Syntax for targeting a specific distributions like say CentOS and version 8.2, the below task will still fail because
-### the task is using apt, and centos uses yum
+### Syntax for targeting a specific distributions like say CentOS and version 8.2, the below task will still fail because the task is using apt, and centos uses yum
 
 ```bash
 - name: update repository index
