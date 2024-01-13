@@ -249,3 +249,69 @@ PLAY RECAP *********************************************************************
 
 
 ```
+
+___
+
+### Final playbook looks like this
+
+```bash
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: update repository index
+    apt:
+      update_cache: yes
+
+  - name: install apache2 package
+    apt:
+      name: apache2
+      state: latest
+
+  - name: add php support for apache2
+    apt:
+      name: libapache2-mod-php
+      state: latest
+
+
+```
+
+___
+
+### This is the syntax when we are not running the playbook for different distributions
+
+```bash
+
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: update repository index
+    apt:
+      update_cache: yes 
+    when: ansible_distribution == "Ubuntu" 
+
+  - name: install apache2 package
+    apt:
+      name: apache2
+      state: latest
+    when: ansible_distribution == "Ubuntu"
+
+  - name: add php support for apache2
+    apt:
+      name: libapache2-mod-php
+      state: latest
+    when: ansible_distribution == "Ubuntu"
+
+
+```
+
+___
+
+### Syntax for when we need to run the playbook against multiple distributions 
+
+

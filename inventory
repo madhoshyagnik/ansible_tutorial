@@ -1,2 +1,6 @@
-[web_servers]
+[ubuntu_web_servers]
 65.0.29.224
+13.201.71.178
+
+[amazon_linux_web_servers]
+3.110.104.71
