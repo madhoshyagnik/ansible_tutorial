@@ -312,6 +312,41 @@ ___
 
 ___
 
-### Syntax for when we need to run the playbook against multiple distributions 
+### Doing gather facts for an amazon linux instance, it's ip is 65.0.184.250 and it's in same inventory.
+### need to define -u ec2-user in command as default remote_user is ubuntu in inventory file.
+
+```bash
+ansible all -m gather_facts --limit 65.0.184.250 -u ec2-user | grep ansible_distribution
+
+
+output:
+
+[WARNING]: Platform linux on host 65.0.184.250 is using the discovered Python
+interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-
+core/2.16/reference_appendices/interpreter_discovery.html for more information.
+        "ansible_distribution": "Amazon",
+        "ansible_distribution_file_parsed": true,
+        "ansible_distribution_file_path": "/etc/os-release",
+        "ansible_distribution_file_variety": "Amazon",
+        "ansible_distribution_major_version": "2023",
+        "ansible_distribution_minor_version": "NA",
+        "ansible_distribution_release": "NA",
+        "ansible_distribution_version": "2023",
+
+
+```
+
+### Syntax for targeting a specific distributions like say CentOS and version 8.2, the below task will still fail because
+### the task is using apt, and centos uses yum
+
+```bash
+- name: update repository index
+    apt:
+      update_cache: yes 
+    when: ansible_distribution == "CentOS" and ansible_distribution_version == "8.2" 
+
+```
 
 
