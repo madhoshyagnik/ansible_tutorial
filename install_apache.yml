@@ -4,42 +4,15 @@
   become: true
   tasks:
 
-  - name: update repository index
-    apt:
-      update_cache: yes 
-    when: ansible_distribution == "Ubuntu" 
-
-  - name: install apache2 package
-    apt:
-      name: apache2
+  - name: install apache and php 
+    package:
+      name: 
+        - "{{ apache_package }}"
+        - "{{ php_package }}"
       state: latest
-    when: ansible_distribution == "Ubuntu"
-
-  - name: add php support for apache2
-    apt:
-      name: libapache2-mod-php
-      state: latest
-    when: ansible_distribution == "Ubuntu"
+      update_cache: yes
 
 
-
-
-  - name: update amazon linux repository index
-    dnf:
-      update_cache: yes 
-    when: ansible_distribution == "Amazon" 
-
-  - name: install apache2 package on amazon linux
-    dnf:
-      name: httpd
-      state: latest
-    when: ansible_distribution == "Amazon"
-
-  - name: add php support for apache2 on amazon linux
-    dnf:
-      name: php
-      state: latest
-    when: ansible_distribution == "Amazon"
       
 
 
