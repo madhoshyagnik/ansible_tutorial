@@ -43,3 +43,23 @@ inventory = inventory
 private_key_file = /home/maddy/kube_key.pem
 remote_user = ubuntu
 ```
+
+___
+list hosts defined in inventory
+
+```bash  
+ansible all --list-hosts 
+
+```
+
+___
+
+### gathers information about the remote instance/host like cpu cores and things, very cool command
+
+```bash
+ansible all -m gather_facts --limit <65.0.29.224> //--limit <65.0.29.224> is optional
+```
+___
+
+
+
