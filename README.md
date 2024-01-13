@@ -1,5 +1,11 @@
 # Learning Ansible
 
+```bash
+ansible all -m apt -a "name=vim-nox" --become --ask-become-pass
+
+```
+### So cool thing about ansible is vim can be installed on 1000 aws instances in a single command, just put the server public ip-address in inventory file and run the above comman
+
 ### Ansible learning module in depth. The host names, or public ips or dns names of aws instances are stored in ansible inventory file. It should be done before running ad-hoc commands or running a ansible playbook.
 
 ### ad-hoc commands are a way to execute a module on remote host by just running a command, and not having to create a whole playbook to do so.
@@ -99,3 +105,83 @@ Make sure to provide the correct password for the remote user with elevated priv
 
 ___
 
+### Installing vim on aws ubuntu instance
+
+```bash
+ansible all -m apt -a "name=vim-nox" --become --ask-become-pass
+
+```
+### So cool thing about ansible is vim can be installed on 1000 aws instances in a single command, just put the server public ip-address in inventory file and run the above command. 
+
+___
+
+### This is what it looks like when a package is already installed on ec2 and we still try to install it with ansible
+
+```bash
+ansible all -m apt -a "name=snapd" --become --ask-become-pass
+BECOME password: 
+
+Output: 
+
+65.0.29.224 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "cache_update_time": 1705146861,
+    "cache_updated": false,
+    "changed": false
+}
+
+```
+___
+
+### but updating the package does not work (state=latest updates it if necessary), as it's already latest
+
+```bash
+
+ansible all -m apt -a "name=snapd state=latest" --become --ask-become-pass
+
+
+BECOME password: 
+65.0.29.224 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "cache_update_time": 1705146861,
+    "cache_updated": false,
+    "changed": false
+}
+
+
+```
+
+___
+
+### Upgrade all packages on all hosts
+
+```bash
+ansible all -m apt -a "upgrade=yes" --become --ask-become-pass
+
+Output:
+
+BECOME password: 
+65.0.29.224 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "msg": "Reading package lists...\nBuilding dependency tree...\nReading state information...\nCalculating upgrade...\n0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.\n",
+    "stderr": "",``
+    "stderr_lines": [],
+    "stdout": "Reading package lists...\nBuilding dependency tree...\nReading state information...\nCalculating upgrade...\n0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.\n",
+    "stdout_lines": [
+        "Reading package lists...",
+        "Building dependency tree...",
+        "Reading state information...",
+        "Calculating upgrade...",
+        "0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded."
+    ]
+}
+
+
+```
