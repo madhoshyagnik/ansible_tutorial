@@ -185,3 +185,42 @@ BECOME password:
 
 
 ```
+
+### Running first playbook
+
+### install_apache.yml
+
+```bash
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: install apache2 package
+      apt:
+        name: apache2
+
+```
+
+### Running command and output:
+
+```bash
+ansible-playbook --ask-become-pass install_apache.yml
+
+Output:
+
+
+BECOME password: 
+
+PLAY [all] ******************************************************************************************
+
+TASK [Gathering Facts] ******************************************************************************
+ok: [65.0.29.224]
+
+TASK [install apache2 package] **********************************************************************
+changed: [65.0.29.224]
+
+PLAY RECAP ******************************************************************************************
+65.0.29.224                : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+
+```
