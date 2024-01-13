@@ -22,7 +22,24 @@
     when: ansible_distribution == "Ubuntu"
 
 
-      
+
+
+  - name: update amazon linux repository index
+    dnf:
+      update_cache: yes 
+    when: ansible_distribution == "Amazon" 
+
+  - name: install apache2 package on amazon linux
+    dnf:
+      name: httpd
+      state: latest
+    when: ansible_distribution == "Amazon"
+
+  - name: add php support for apache2 on amazon linux
+    dnf:
+      name: php
+      state: latest
+    when: ansible_distribution == "Amazon"
       
 
 

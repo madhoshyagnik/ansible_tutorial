@@ -1,4 +1,7 @@
-[web_servers]
-65.0.29.224
-13.201.71.178
-65.0.184.250
+[aws_linux_instances]
+amazon_linux_instance ansible_host=13.201.129.159 ansible_user=ec2-user
+
+[ubuntu_instances]
+ubuntu_instance ansible_host=65.0.29.224 ansible_user=ubuntu
+ubuntu_instance ansible_host=13.201.71.178 ansible_user=ubuntu
+
