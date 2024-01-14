@@ -403,3 +403,13 @@ ___
 
 ```
 
+___
+
+### running an ansible playbook with elevated privileges 
+
+```bash
+ansible-playbook  --ask-become-pass site.yml
+
+```
+
+___

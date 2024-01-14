@@ -77,6 +77,16 @@
        state: started
        enabled: yes
      when: ansible_distribution == "Ubuntu" 
+
+   
+   - name: change admin email
+     tags: amazon,httpd,apache
+     lineinfile: 
+       path: /etc/httpd/conf/httpd.conf
+       regexp: '^ServerAdmin'
+       line: ServerAdmin newemailaddress.gmail.com
+     when: ansible_distribution == "Amazon"
+      
      
 
    - name: copy default html file for site
