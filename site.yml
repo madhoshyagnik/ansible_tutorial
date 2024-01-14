@@ -2,15 +2,33 @@
  
  - hosts: all
    become: true
+   pre_tasks:
+
+   - name: install updates (amazon)
+     dnf:
+       update_only: yes
+       update_cache: yes
+     when: ansible_distribution == "Amazon"
+   
+   - name: install updates (ubuntu)
+     apt:
+       upgrade: dist
+       update_cache: yes
+     when: ansible_distribution == "Ubuntu"
+
+
+
+
+ - hosts: web_servers
+   become: true
    tasks:
- 
+
    - name: install apache and php for Ubuntu servers
      apt:
        name:
          - apache2
          - libapache2-mod-php
        state: latest
-       update_cache: yes
      when: ansible_distribution == "Ubuntu"
  
    - name: install apache and php for Amazon servers
@@ -19,5 +37,4 @@
          - httpd
          - php
        state: latest
-       update_cache: yes
      when: ansible_distribution == "Amazon"
