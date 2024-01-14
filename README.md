@@ -361,3 +361,19 @@ ansible-playbook --tags "apache,db" --ask-become-pass site
 
 ```
 ___
+
+
+### copying files to remote servers 
+
+```bash
+
+   - name: copy default html file for site
+     tags: apache,apache2,httpd
+     copy:
+       src: default_site.html
+       dest: /var/www/html/index.html
+       owner: root
+       group: root
+       mode: 0644
+
+```
