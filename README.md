@@ -413,3 +413,26 @@ ansible-playbook  --ask-become-pass site.yml
 ```
 
 ___
+
+#### change email address, save that change to variable httpd, restart httpd task will only run if the variable has changed, if not it won't run.
+
+
+```bash 
+   - name: change admin email
+     tags: amazon,httpd,apache
+     lineinfile: 
+       path: /etc/httpd/conf/httpd.conf
+       regexp: '^ServerAdmin'
+       line: ServerAdmin newemailaddress.gmail.com
+     when: ansible_distribution == "Amazon"
+     register: httpd
+
+   - name: restart httpd (amazon)
+     tags: apache,amazon,httpd
+     service: 
+       name: httpd
+       state: restarted
+     when: httpd.changed
+
+```
+___

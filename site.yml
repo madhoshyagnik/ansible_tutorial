@@ -84,9 +84,17 @@
      lineinfile: 
        path: /etc/httpd/conf/httpd.conf
        regexp: '^ServerAdmin'
-       line: ServerAdmin newemailaddress.gmail.com
+       line: ServerAdmin newemail11111address.gmail.com
      when: ansible_distribution == "Amazon"
-      
+     register: httpd
+
+   - name: restart httpd (amazon)
+     tags: apache,amazon,httpd
+     service: 
+       name: httpd
+       state: restarted
+     when: httpd.changed
+
      
 
    - name: copy default html file for site
