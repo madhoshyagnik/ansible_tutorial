@@ -1,14 +1,16 @@
 [web_servers]
-65.0.29.224 ansible_user=ubuntu apache_package=apache2 php_package=libapache2-mod-php
+13.233.130.151 ansible_user=ubuntu apache_package=apache2 php_package=libapache2-mod-php
 3.108.235.39 ansible_user=ubuntu apache_package=apache2 php_package=libapache2-mod-php
-13.201.129.159 ansible_user=ec2-user apache_package=httpd php_package=php
+65.0.72.243 ansible_user=ec2-user apache_package=httpd php_package=php
 13.235.71.172 ansible_user=ec2-user apache_package=httpd php_package=php
+65.1.112.36 ansible_user=ec2-user apache_package=httpd php_package=php
+43.205.254.73 ansible_user=ec2-user apache_package=httpd php_package=php
 
 [db_servers]
 13.201.71.178 ansible_user=ubuntu apache_package=apache2 php_package=libapache2-mod-php
 
 [file_servers]
-15.207.109.71 ansible_user=ec2-user apache_package=httpd php_package=php
+13.126.250.59 ansible_user=ec2-user apache_package=httpd php_package=php
 
 [workstations]
 3.108.235.39 ansible_user=ubuntu apache_package=apache2 php_package=libapache2-mod-php

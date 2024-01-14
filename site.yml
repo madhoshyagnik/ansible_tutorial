@@ -61,6 +61,24 @@
        state: latest
      when: ansible_distribution == "Amazon"
 
+
+   - name: start httpd (for amazon linux)
+     tags: amazon, httpd, apache
+     service: 
+       name: httpd
+       state: started
+       enabled: yes
+     when: ansible_distribution == "Amazon" 
+
+   - name: start httpd (for ubuntu)
+     tags: ubuntu,apache
+     service: 
+       name: apache2
+       state: started
+       enabled: yes
+     when: ansible_distribution == "Ubuntu" 
+     
+
    - name: copy default html file for site
      tags: apache,apache2,httpd
      copy:
