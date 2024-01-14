@@ -346,5 +346,18 @@ core/2.16/reference_appendices/interpreter_discovery.html for more information.
     when: ansible_distribution == "CentOS" and ansible_distribution_version == "8.2" 
 
 ```
+___
 
 
+### Using tags
+```bash 
+ansible-playbook --tags amazon --ask-become-pass site.yml
+
+```
+
+### Using multiple tags in one command
+```bash
+ansible-playbook --tags "apache,db" --ask-become-pass site
+
+```
+___
