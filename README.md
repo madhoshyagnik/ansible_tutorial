@@ -377,3 +377,28 @@ ___
        mode: 0644
 
 ```
+
+___
+
+
+### installing terraform on remote ubuntu server
+
+```bash
+ - hosts: workstations
+   become: true
+   tasks:
+   
+   - name: install unzip 
+     package: 
+       name: unzip
+
+   - name: install terraform
+     unarchive: 
+       src: https://releases.hashicorp.com/terraform/1.6.6/terraform_1.6.6_darwin_amd64.zip
+       dest: /usr/local/bin
+       remote_src: yes
+       mode: 0755
+       owner: root
+       group: root
+
+```
