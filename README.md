@@ -381,7 +381,7 @@ ___
 ___
 
 
-### installing terraform on remote ubuntu server
+### installing unzip and installing terraform on remote ubuntu server
 
 ```bash
  - hosts: workstations
