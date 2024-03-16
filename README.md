@@ -4,7 +4,7 @@
 ansible all -m apt -a "name=vim-nox" --become --ask-become-pass
 
 ```
-### So cool thing about ansible is vim can be installed on 1000 aws instances in a single command, just put the server public ip-address in inventory file and run the above comman
+### So cool thing about ansible is vim can be installed on 1000 aws instances with a single command, just put the server public ip-address in inventory file and run the above comman
 
 ### Ansible learning module in depth. The host names, or public ips or dns names of aws instances are stored in ansible inventory file. It should be done before running ad-hoc commands or running a ansible playbook.
 
